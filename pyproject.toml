@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "hh-20210901"
+version = "0.1.0"
+description = "Demo converting XML to JSON using a simple FastAPI app."
+authors = ["Lucas Melin <lucas.melin@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.68.1"
+xmltodict = "^0.12.0"
+uvicorn = "^0.15.0"
+Jinja2 = "^3.0.1"
+python-multipart = "^0.0.5"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
