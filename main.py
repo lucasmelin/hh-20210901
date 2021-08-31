@@ -9,13 +9,22 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
 
-@app.post("/convert")
-async def convert(input_xml: str = Form(...)):
+@app.post("/convertxml")
+async def convertxml(input_xml: str = Form(...)):
     try:
-        output = json.dumps(xmltodict.parse(input_xml), indent=4)
+        output_json = json.dumps(xmltodict.parse(input_xml), indent=4)
     except xml.parsers.expat.ExpatError:
-        output = "Error: Invalid XML"
-    return {"input_xml": input_xml, "output_json": output}
+        output_json = "Error: Invalid XML"
+    return {"input_xml": input_xml, "output_json": output_json}
+
+
+@app.post("/convertjson")
+async def convert(input_json: str = Form(...)):
+    try:
+        output_xml = xmltodict.unparse(json.loads(input_json), pretty=True)
+    except json.decoder.JSONDecodeError:
+        output_xml = "Error: Invalid JSON"
+    return {"output_xml": output_xml, "input_json": input_json}
 
 
 @app.get("/", response_class=HTMLResponse)
