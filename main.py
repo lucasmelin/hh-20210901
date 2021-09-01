@@ -19,7 +19,7 @@ async def convertxml(input_xml: str = Form(...)):
 
 
 @app.post("/convertjson")
-async def convert(input_json: str = Form(...)):
+async def convertjson(input_json: str = Form(...)):
     try:
         output_xml = xmltodict.unparse(json.loads(input_json), pretty=True)
     except json.decoder.JSONDecodeError:

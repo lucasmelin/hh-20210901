@@ -8,6 +8,8 @@ Demo for Hack Hours showing how to build a simple, useful FastAPI project with a
 git clone
 poetry install
 poetry run uvicorn main:app
+# to run the form app
+poetry run uvicorn form:app
 ```
 
 ## Screenshot
